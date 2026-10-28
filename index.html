@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ja"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>テストまでの授業見通し（理科）</title>
+<meta name="robots" content="noindex">
+<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#1f2a24;--sub:#5f6b64;--line:#d6dcd8;--bg:#f4f6f3;--edit:#c2410c}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Zen Maru Gothic","Yu Gothic UI",sans-serif}
+.wrap{max-width:1500px;margin:0 auto;padding:20px 16px 40px}
+.panel,.lead,.note,.bar{max-width:100%}
+h1{font-size:clamp(17px,4.6vw,22px);margin:0 0 4px;white-space:nowrap}
+.lead{color:var(--sub);font-size:13px;margin:0 0 12px;line-height:1.6;white-space:nowrap;overflow-x:auto}
+.bar{display:flex;gap:8px;margin:0 0 12px;align-items:center;overflow-x:auto;padding-bottom:2px}
+.bar button,.bar label{font:inherit;font-size:13px;border:1.5px solid var(--ink);background:#fff;color:var(--ink);
+  border-radius:8px;padding:6px 12px;cursor:pointer;white-space:nowrap}
+.bar .hint{color:var(--sub);font-size:12px;white-space:nowrap}
+.bar input[type=file]{display:none}
+.panel{background:#fff;border-radius:12px;padding:12px;overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:12px}
+th,td{border-bottom:1px solid var(--line);padding:0;text-align:left;vertical-align:middle;white-space:nowrap}
+thead th{background:#fff;font-size:13px;border-bottom:2px solid var(--ink);padding:6px 8px}
+th.d{padding:6px 8px;width:88px}
+td .v{display:block;padding:6px 8px;min-width:96px;min-height:28px;outline:none;white-space:nowrap;overflow:hidden}
+td.on .v{cursor:text}
+td.on .v:focus{box-shadow:inset 0 0 0 2px #2563eb;background:#fff}
+td.edited .v{box-shadow:inset 3px 0 0 var(--edit)}
+.k-光{background:#e6f0fb}.k-循{background:#e3f4ea}.k-水{background:#fdf2d8}
+.k-etc{background:#efeef6;color:var(--sub)}.k-tbd{background:#f3f3f1;color:var(--sub)}
+.k-test .v{font-weight:700;box-shadow:inset 0 0 0 2px var(--ink)}
+.k-test.edited .v{box-shadow:inset 0 0 0 2px var(--ink),inset 5px 0 0 var(--edit)}
+.k-final{background:#1f2a24;color:#fff;font-weight:700}
+tfoot th,tfoot td{font-weight:700;border-top:2px solid var(--ink);padding:6px 8px}
+.note{color:var(--sub);font-size:12px;line-height:1.7;margin-top:12px;white-space:nowrap;overflow-x:auto}
+.toast{position:fixed;left:50%;bottom:20px;transform:translateX(-50%);background:var(--ink);color:#fff;
+  padding:8px 14px;border-radius:8px;font-size:13px;opacity:0;transition:opacity .2s;pointer-events:none;white-space:nowrap}
+.toast.show{opacity:1}
+</style></head><body><div class="wrap">
+<h1>テストまでの見通し（理科）</h1>
+<p class="lead" id="lead"></p>
+<div class="bar">
+  <button id="exp" type="button">書き出す</button>
+  <label for="imp">読み込む</label><input id="imp" type="file" accept="application/json,.json">
+  <button id="clr" type="button">入力を全部消す</button>
+  <span class="hint">色のついたセルを押すと書き換えられます。左がオレンジ＝書き換えた所</span>
+</div>
+<div class="panel"><table id="t"></table></div>
+<div class="note">
+・7年：光は一斉で①〜⑥＋⑦小テスト。7-1は10/27が光①、10/28は自習。7-2・7-3は仮の並び。<br>
+・8年：循環＝3章②血液の循環と呼吸・排出。並びは小テストの窓口と同じ（10/23の自習を反映）。<br>
+・9年：水圧の⑥小テストまで。そのあとは未定。<br>
+・「理科の数」は時間割の理科のコマ数（自習を除く）。中身を書き換えても変わりません。<br>
+・ほかの端末に移すときは「書き出す」でファイルを保存し、移った先で「読み込む」。
+</div>
+<div class="toast" id="toast"></div>
+</div>
+<script>
+const DATA = {"classes": ["7-1", "7-2", "7-3", "8-1", "8-2", "8-3", "9-1", "9-2", "9-3", "9-4"], "rows": [{"key": "10-28", "label": "10/28（水）", "cells": {"7-1": "自習", "7-2": "光③ 反射の演習", "8-1": "循環③ 自由進度2", "8-2": "循環① 説明・計画", "8-3": "循環③ 自由進度2", "9-1": "未定", "9-2": "未定", "9-3": "水圧⑥ 小テスト ／ 未定", "9-4": "未定"}}, {"key": "10-29", "label": "10/29（木）", "cells": {"7-1": "光② 反射の演習", "7-2": "光④ 屈折", "7-3": "光③ 反射の演習", "8-2": "循環② 自由進度1", "9-1": "未定", "9-2": "未定", "9-3": "未定"}}, {"key": "10-30", "label": "10/30（金）", "cells": {"8-1": "循環④ 自由進度3", "8-2": "循環③ 自由進度2", "8-3": "循環④ 自由進度3", "9-2": "未定", "9-4": "未定"}}, {"key": "11-2", "label": "11/2（月）", "cells": {"7-3": "光④ 屈折", "8-1": "循環⑤ 自由進度4", "8-2": "循環④ 自由進度3", "8-3": "循環⑤ 自由進度4", "9-1": "未定", "9-4": "未定"}}, {"key": "11-4", "label": "11/4（水）", "cells": {"7-1": "光③ 反射の演習", "7-2": "光⑤ 屈折の演習", "8-1": "循環⑥ 小テスト", "8-2": "循環⑤ 自由進度4", "8-3": "循環⑥ 小テスト", "9-2": "未定", "9-3": "未定", "9-4": "未定"}}, {"key": "11-5", "label": "11/5（木）", "cells": {"7-2": "光⑥ 全反射", "7-3": "光⑤ 屈折の演習", "8-1": "次の単元（未定）", "8-2": "循環⑥ 小テスト", "9-1": "未定"}}, {"key": "11-6", "label": "11/6（金）", "cells": {"8-1": "次の単元（未定）", "8-2": "次の単元（未定）", "8-3": "次の単元（未定）", "9-2": "未定", "9-4": "未定"}}, {"key": "11-9", "label": "11/9（月）", "cells": {"7-3": "光⑥ 全反射", "8-1": "次の単元（未定）", "8-2": "次の単元（未定）", "8-3": "次の単元（未定）", "9-1": "未定", "9-2": "未定", "9-4": "未定"}}, {"key": "11-10", "label": "11/10（火）", "cells": {"7-1": "光④ 屈折", "7-2": "光⑦ 小テスト", "7-3": "光⑦ 小テスト", "8-3": "次の単元（未定）", "9-1": "未定", "9-3": "未定"}}, {"key": "11-11", "label": "11/11（水）", "cells": {"7-1": "光⑤ 屈折の演習", "7-2": "凸レンズ（未定）", "8-2": "次の単元（未定）", "9-3": "未定 ／ 未定"}}, {"key": "11-12", "label": "11/12（木）", "cells": {"7-1": "光⑥ 全反射", "8-2": "次の単元（未定）", "9-2": "未定", "9-3": "未定"}}, {"key": "11-13", "label": "11/13（金）", "cells": {"7-1": "光⑦ 小テスト", "8-3": "次の単元（未定）", "9-1": "未定", "9-3": "未定", "9-4": "未定"}}, {"key": "11-16", "label": "11/16（月）", "cells": {"7-3": "凸レンズ（未定）", "8-1": "次の単元（未定）", "8-2": "次の単元（未定）", "8-3": "次の単元（未定）", "9-1": "未定", "9-2": "未定", "9-4": "未定"}}, {"key": "11-17", "label": "11/17（火）", "cells": {"7-1": "凸レンズ（未定）", "7-2": "凸レンズ（未定）", "7-3": "凸レンズ（未定）", "8-1": "次の単元（未定）", "8-3": "次の単元（未定）", "9-1": "未定", "9-3": "未定", "9-4": "未定"}}, {"key": "11-18", "label": "11/18（水）", "cells": {"8-1": "期末テスト", "8-2": "期末テスト", "8-3": "期末テスト"}}, {"key": "11-19", "label": "11/19（木）", "cells": {"7-1": "期末テスト", "7-2": "期末テスト", "7-3": "期末テスト"}}, {"key": "11-20", "label": "11/20（金）", "cells": {"9-1": "期末テスト", "9-2": "期末テスト", "9-3": "期末テスト", "9-4": "期末テスト"}}], "count": {"7-1": 7, "7-2": 7, "7-3": 7, "8-1": 9, "8-2": 11, "8-3": 10, "9-1": 9, "9-2": 8, "9-3": 10, "9-4": 9}, "tests": "8年 11/18（水）1限／7年 11/19（木）2限／9年 11/20（金）2限"};
+const KEY = 'rika-test-mitooshi:v1';
+function load(){ try{ return JSON.parse(localStorage.getItem(KEY)||'{}')||{}; }catch(e){ return {}; } }
+function save(o){ try{ localStorage.setItem(KEY, JSON.stringify(o)); return true; }catch(e){ return false; } }
+let edits = load();
+const t = document.getElementById('t');
+document.getElementById('lead').textContent =
+  '10/28から期末テストまで。時間割は教務の確定版（10/27）。期末テスト：' + DATA.tests;
+
+function kind(s){
+  if (s.indexOf('期末テスト') >= 0) return 'final';
+  if (s.indexOf('小テスト') >= 0 || s.indexOf('パフォーマンス') >= 0) return 'test';
+  if (s.indexOf('未') >= 0) return 'tbd';
+  if (s.indexOf('アンケート') >= 0 || s === '自習') return 'etc';
+  const h = s.trim().charAt(0);
+  return ('光循水'.indexOf(h) >= 0) ? h : 'etc';
+}
+function toast(msg){ const e = document.getElementById('toast'); e.textContent = msg; e.classList.add('show');
+  clearTimeout(toast._t); toast._t = setTimeout(() => e.classList.remove('show'), 1600); }
+
+function paint(td, key, base){
+  const v = td.querySelector('.v');
+  const cur = (key in edits) ? edits[key] : base;
+  if (document.activeElement !== v) v.textContent = cur;
+  td.className = 'on k-' + kind(cur) + ((key in edits && edits[key] !== base) ? ' edited' : '');
+}
+
+function build(){
+  let h = '<thead><tr><th>日</th>' + DATA.classes.map(c => '<th>' + c + '</th>').join('') + '</tr></thead><tbody>';
+  for (const r of DATA.rows){
+    h += '<tr><th class="d">' + r.label + '</th>';
+    for (const c of DATA.classes){
+      if (c in r.cells) h += '<td data-key="' + r.key + '|' + c + '"><span class="v" contenteditable="true" spellcheck="false"></span></td>';
+      else h += '<td></td>';
+    }
+    h += '</tr>';
+  }
+  h += '</tbody><tfoot><tr><th>理科の数</th>' + DATA.classes.map(c => '<td>' + DATA.count[c] + '</td>').join('') + '</tr></tfoot>';
+  t.innerHTML = h;
+  for (const td of t.querySelectorAll('td[data-key]')){
+    const key = td.dataset.key, parts = key.split('|');
+    const base = DATA.rows.find(r => r.key === parts[0]).cells[parts[1]];
+    const v = td.querySelector('.v');
+    paint(td, key, base);
+    v.addEventListener('keydown', e => {
+      if (e.key === 'Enter'){ e.preventDefault(); v.blur(); }
+      if (e.key === 'Escape'){ v.textContent = (key in edits) ? edits[key] : base; v.blur(); }
+    });
+    v.addEventListener('paste', e => {
+      e.preventDefault();
+      const s = (e.clipboardData || window.clipboardData).getData('text').replace(/\s*\n\s*/g, ' ');
+      document.execCommand('insertText', false, s);
+    });
+    v.addEventListener('blur', () => {
+      const s = v.textContent.replace(/\s+/g, ' ').trim();
+      if (s === base || s === '') delete edits[key]; else edits[key] = s;
+      if (!save(edits)) toast('このブラウザには保存できませんでした（書き出しで残してください）');
+      paint(td, key, base);
+    });
+    v.addEventListener('input', () => { td.className = 'on k-' + kind(v.textContent) + ' edited'; });
+  }
+}
+build();
+
+document.getElementById('exp').addEventListener('click', () => {
+  const blob = new Blob([JSON.stringify({key: KEY, saved: new Date().toISOString(), edits: edits}, null, 1)], {type: 'application/json'});
+  const a = document.createElement('a'); a.href = URL.createObjectURL(blob);
+  const d = new Date(); a.download = 'テストまでの授業見通し_' + (d.getMonth() + 1) + '月' + d.getDate() + '日.json';
+  document.body.appendChild(a); a.click(); a.remove();
+  toast('書き出しました（' + Object.keys(edits).length + 'か所）');
+});
+document.getElementById('imp').addEventListener('change', async e => {
+  const f = e.target.files[0]; if (!f) return;
+  try {
+    const o = JSON.parse(await f.text());
+    if (!o || typeof o.edits !== 'object') throw 0;
+    edits = o.edits; save(edits); build();
+    toast('読み込みました（' + Object.keys(edits).length + 'か所）');
+  } catch (_) { toast('このファイルは読み込めませんでした'); }
+  e.target.value = '';
+});
+document.getElementById('clr').addEventListener('click', () => {
+  if (!Object.keys(edits).length){ toast('書き換えた所はありません'); return; }
+  if (!confirm('書き換えた ' + Object.keys(edits).length + ' か所を消して、もとの見込みに戻します。よいですか？')) return;
+  edits = {}; save(edits); build(); toast('もとに戻しました');
+});
+</script></body></html>
