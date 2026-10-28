@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ja"><head><meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>テストまでの授業見通し（理科）</title>
+<title>授業のミトオシ</title>
 <meta name="robots" content="noindex">
 <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700&display=swap" rel="stylesheet">
 <style>
@@ -37,7 +37,7 @@ tfoot th,tfoot td{font-weight:700;border-top:2px solid var(--ink);padding:6px 8p
   padding:8px 14px;border-radius:8px;font-size:13px;opacity:0;transition:opacity .2s;pointer-events:none;white-space:nowrap}
 .toast.show{opacity:1}
 </style></head><body><div class="wrap">
-<h1>テストまでの見通し（理科）</h1>
+<h1>授業のミトオシ</h1>
 <p class="lead" id="lead"></p>
 <div class="bar">
   <button id="exp" type="button">書き出す</button>
@@ -123,7 +123,7 @@ build();
 document.getElementById('exp').addEventListener('click', () => {
   const blob = new Blob([JSON.stringify({key: KEY, saved: new Date().toISOString(), edits: edits}, null, 1)], {type: 'application/json'});
   const a = document.createElement('a'); a.href = URL.createObjectURL(blob);
-  const d = new Date(); a.download = 'テストまでの授業見通し_' + (d.getMonth() + 1) + '月' + d.getDate() + '日.json';
+  const d = new Date(); a.download = '授業のミトオシ_' + (d.getMonth() + 1) + '月' + d.getDate() + '日.json';
   document.body.appendChild(a); a.click(); a.remove();
   toast('書き出しました（' + Object.keys(edits).length + 'か所）');
 });
