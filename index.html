@@ -5,7 +5,7 @@
 <meta name="robots" content="noindex">
 <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700&display=swap" rel="stylesheet">
 <style>
-:root{--ink:#1f2a24;--sub:#5f6b64;--line:#d6dcd8;--bg:#f4f6f3}
+:root{--ink:#1f2a24;--sub:#5f6b64;--line:#e6e0d6;--bg:#f4ece0}
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--ink);font-family:"Zen Maru Gothic","Yu Gothic UI",sans-serif}
 .wrap{max-width:1500px;margin:0 auto;padding:20px 16px 40px}
@@ -16,35 +16,73 @@ table{border-collapse:collapse;width:100%;font-size:12px}
 th,td{border-bottom:1px solid var(--line);padding:6px 8px;text-align:left;vertical-align:middle;white-space:nowrap}
 thead th{background:#fff;font-size:13px;border-bottom:2px solid var(--ink)}
 th.d{width:88px}
-.k-光{background:#e6f0fb}.k-循{background:#e3f4ea}.k-水{background:#fdf2d8}
-.k-etc{background:#efeef6;color:var(--sub)}.k-tbd{background:#f3f3f1;color:var(--sub)}
-.k-test{background:#fff;font-weight:700;box-shadow:inset 0 0 0 2px var(--ink)}
+.k-u0{background:#a9cdf2}.k-u1{background:#c7b8f0}.k-u2{background:#9fdab3}
+.k-u3{background:#f7c98a}.k-u4{background:#f5aaa0}.k-u5{background:#ecd98e}
+.k-etc{background:#ecebf1;color:#5d5a6b}.k-tbd{background:#fff;color:#66615a}
+.k-test{background:#fff;font-weight:700;box-shadow:inset 0 0 0 3px var(--ink)}
 .k-final{background:#1f2a24;color:#fff;font-weight:700}
+.bar{display:flex;gap:8px;align-items:center;margin:0 0 12px;white-space:nowrap;overflow-x:auto}
+.bar span{color:var(--sub);font-size:13px}
+.bar button{font:inherit;font-size:13px;font-weight:700;background:#fff;color:var(--ink);border:3px solid transparent;border-radius:8px;padding:5px 14px;cursor:pointer}
+.bar button[aria-pressed="true"]{border-color:var(--ink)}
+.bar button[aria-pressed="false"]{color:#66615a}
+.bar button:active{transform:translateY(2px)}
+.off{display:none}
 tfoot td,tfoot th{font-weight:700;border-top:2px solid var(--ink)}
 .note{color:var(--sub);font-size:12px;line-height:1.7;margin-top:12px;white-space:nowrap;overflow-x:auto}
 </style></head><body><div class="wrap">
 <h1>授業のミトオシ</h1>
 <p class="lead">11/1（日）から2学期期末テストまで。時間割は教務の確定版（10/27）。<br>2学期期末テスト：8年 11/18（水） 1限／7年 11/19（木） 2限／9年 11/20（金） 2限</p>
+<div class="bar"><span>表示する学年</span><button type="button" data-g="7" aria-pressed="true">7年</button><button type="button" data-g="8" aria-pressed="true">8年</button><button type="button" data-g="9" aria-pressed="true">9年</button></div>
 <div class="panel"><table>
-<thead><tr><th>日</th><th>7-1</th><th>7-2</th><th>7-3</th><th>8-1</th><th>8-2</th><th>8-3</th><th>9-1</th><th>9-2</th><th>9-3</th><th>9-4</th></tr></thead>
-<tbody><tr><th class="d">11/2（月）</th><td></td><td></td><td class="k-光">光③ 反射の演習</td><td class="k-循">循環⑤ 自由進度4</td><td class="k-循">循環④ 自由進度3</td><td class="k-循">循環⑤ 自由進度4</td><td class="k-tbd">未定</td><td></td><td></td><td class="k-tbd">未定</td></tr>
-<tr><th class="d">11/4（水）</th><td class="k-光">光③ 反射の演習</td><td class="k-光">光④ 屈折</td><td></td><td class="k-test">循環⑥ 小テスト</td><td class="k-循">循環⑤ 自由進度4</td><td class="k-test">循環⑥ 小テスト</td><td></td><td class="k-tbd">未定</td><td class="k-tbd">未定</td><td class="k-tbd">未定</td></tr>
-<tr><th class="d">11/5（木）</th><td></td><td class="k-光">光⑤ 屈折の演習</td><td class="k-光">光④ 屈折</td><td class="k-tbd">次の単元（未定）</td><td class="k-test">循環⑥ 小テスト</td><td></td><td class="k-tbd">未定</td><td></td><td></td><td></td></tr>
-<tr><th class="d">11/6（金）</th><td></td><td></td><td></td><td class="k-tbd">次の単元（未定）</td><td class="k-tbd">次の単元（未定）</td><td class="k-tbd">次の単元（未定）</td><td></td><td class="k-tbd">未定</td><td></td><td class="k-tbd">未定</td></tr>
-<tr><th class="d">11/9（月）</th><td></td><td></td><td class="k-光">光⑤ 屈折の演習</td><td class="k-tbd">次の単元（未定）</td><td class="k-tbd">次の単元（未定）</td><td class="k-tbd">次の単元（未定）</td><td class="k-tbd">未定</td><td class="k-tbd">未定</td><td></td><td class="k-tbd">未定</td></tr>
-<tr><th class="d">11/10（火）</th><td class="k-光">光④ 屈折</td><td class="k-光">光⑥ 全反射</td><td class="k-光">光⑥ 全反射</td><td></td><td></td><td class="k-tbd">次の単元（未定）</td><td class="k-tbd">未定</td><td></td><td class="k-tbd">未定</td><td></td></tr>
-<tr><th class="d">11/11（水）</th><td class="k-光">光⑤ 屈折の演習</td><td class="k-tbd">凸レンズ（未定）</td><td></td><td></td><td class="k-tbd">次の単元（未定）</td><td></td><td></td><td></td><td class="k-tbd">未定 ／ 未定</td><td></td></tr>
-<tr><th class="d">11/12（木）</th><td class="k-光">光⑥ 全反射</td><td></td><td></td><td></td><td class="k-tbd">次の単元（未定）</td><td></td><td></td><td class="k-tbd">未定</td><td class="k-tbd">未定</td><td></td></tr>
-<tr><th class="d">11/13（金）</th><td class="k-tbd">凸レンズ（未定）</td><td></td><td></td><td></td><td></td><td class="k-tbd">次の単元（未定）</td><td class="k-tbd">未定</td><td></td><td class="k-tbd">未定</td><td class="k-tbd">未定</td></tr>
-<tr><th class="d">11/16（月）</th><td></td><td></td><td class="k-tbd">凸レンズ（未定）</td><td class="k-tbd">次の単元（未定）</td><td class="k-tbd">次の単元（未定）</td><td class="k-tbd">次の単元（未定）</td><td class="k-tbd">未定</td><td class="k-tbd">未定</td><td></td><td class="k-tbd">未定</td></tr>
-<tr><th class="d">11/17（火）</th><td class="k-tbd">凸レンズ（未定）</td><td class="k-tbd">凸レンズ（未定）</td><td class="k-tbd">凸レンズ（未定）</td><td class="k-tbd">次の単元（未定）</td><td></td><td class="k-tbd">次の単元（未定）</td><td class="k-tbd">未定</td><td></td><td class="k-tbd">未定</td><td class="k-tbd">未定</td></tr>
-<tr><th class="d">11/18（水）</th><td></td><td></td><td></td><td class="k-final">期末テスト</td><td class="k-final">期末テスト</td><td class="k-final">期末テスト</td><td></td><td></td><td></td><td></td></tr>
-<tr><th class="d">11/19（木）</th><td class="k-final">期末テスト</td><td class="k-final">期末テスト</td><td class="k-final">期末テスト</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-<tr><th class="d">11/20（金）</th><td></td><td></td><td></td><td></td><td></td><td></td><td class="k-final">期末テスト</td><td class="k-final">期末テスト</td><td class="k-final">期末テスト</td><td class="k-final">期末テスト</td></tr></tbody>
-<tfoot><tr><th>理科の数</th><td>6</td><td>5</td><td>6</td><td>7</td><td>8</td><td>8</td><td>7</td><td>5</td><td>7</td><td>7</td></tr></tfoot>
+<thead><tr><th>日</th><th data-g="7">7-1</th><th data-g="7">7-2</th><th data-g="7">7-3</th><th data-g="8">8-1</th><th data-g="8">8-2</th><th data-g="8">8-3</th><th data-g="9">9-1</th><th data-g="9">9-2</th><th data-g="9">9-3</th><th data-g="9">9-4</th></tr></thead>
+<tbody><tr><th class="d">11/2（月）</th><td data-g="7"></td><td data-g="7"></td><td class="k-u0" data-g="7">光③ 反射の演習</td><td class="k-u2" data-g="8">循環⑤ 自由進度4</td><td class="k-u2" data-g="8">循環④ 自由進度3</td><td class="k-u2" data-g="8">循環⑤ 自由進度4</td><td class="k-u3" data-g="9">仕事① プリント</td><td data-g="9"></td><td data-g="9"></td><td class="k-u3" data-g="9">仕事① プリント</td></tr>
+<tr><th class="d">11/4（水）</th><td class="k-u0" data-g="7">光③ 反射の演習</td><td class="k-u0" data-g="7">光④ 屈折</td><td data-g="7"></td><td class="k-test" data-g="8">循環⑥ 小テスト</td><td class="k-u2" data-g="8">循環⑤ 自由進度4</td><td class="k-test" data-g="8">循環⑥ 小テスト</td><td data-g="9"></td><td class="k-u3" data-g="9">仕事① プリント</td><td class="k-u3" data-g="9">仕事① プリント</td><td class="k-u3" data-g="9">仕事② プリント</td></tr>
+<tr><th class="d">11/5（木）</th><td data-g="7"></td><td class="k-u0" data-g="7">光⑤ 屈折の演習・全反射</td><td class="k-u0" data-g="7">光④ 屈折</td><td class="k-tbd" data-g="8">次の単元（未定）</td><td class="k-test" data-g="8">循環⑥ 小テスト</td><td data-g="8"></td><td class="k-u3" data-g="9">仕事② プリント</td><td data-g="9"></td><td data-g="9"></td><td data-g="9"></td></tr>
+<tr><th class="d">11/6（金）</th><td data-g="7"></td><td data-g="7"></td><td data-g="7"></td><td class="k-tbd" data-g="8">次の単元（未定）</td><td class="k-tbd" data-g="8">次の単元（未定）</td><td class="k-tbd" data-g="8">次の単元（未定）</td><td data-g="9"></td><td class="k-u3" data-g="9">仕事② プリント</td><td data-g="9"></td><td class="k-u3" data-g="9">仕事③ プリント</td></tr>
+<tr><th class="d">11/9（月）</th><td data-g="7"></td><td data-g="7"></td><td class="k-u0" data-g="7">光⑤ 屈折の演習・全反射</td><td class="k-tbd" data-g="8">次の単元（未定）</td><td class="k-tbd" data-g="8">次の単元（未定）</td><td class="k-tbd" data-g="8">次の単元（未定）</td><td class="k-u3" data-g="9">仕事③ プリント</td><td class="k-u3" data-g="9">仕事③ プリント</td><td data-g="9"></td><td class="k-u3" data-g="9">仕事④ 演習</td></tr>
+<tr><th class="d">11/10（火）</th><td class="k-u0" data-g="7">光④ 屈折</td><td class="k-u1" data-g="7">凸レンズ① 実験</td><td class="k-u1" data-g="7">凸レンズ① 実験</td><td data-g="8"></td><td data-g="8"></td><td class="k-tbd" data-g="8">次の単元（未定）</td><td class="k-u3" data-g="9">仕事④ 演習</td><td data-g="9"></td><td class="k-u3" data-g="9">仕事② プリント</td><td data-g="9"></td></tr>
+<tr><th class="d">11/11（水）</th><td class="k-u0" data-g="7">光⑤ 屈折の演習・全反射</td><td class="k-u1" data-g="7">凸レンズ② 3本の光と作図</td><td data-g="7"></td><td data-g="8"></td><td class="k-tbd" data-g="8">次の単元（未定）</td><td data-g="8"></td><td data-g="9"></td><td data-g="9"></td><td class="k-u3" data-g="9">仕事③ プリント ／ 仕事④ 演習</td><td data-g="9"></td></tr>
+<tr><th class="d">11/12（木）</th><td class="k-u1" data-g="7">凸レンズ① 実験</td><td data-g="7"></td><td data-g="7"></td><td data-g="8"></td><td class="k-tbd" data-g="8">次の単元（未定）</td><td data-g="8"></td><td data-g="9"></td><td class="k-u3" data-g="9">仕事④ 演習</td><td class="k-u4" data-g="9">太陽 黒点・演習</td><td data-g="9"></td></tr>
+<tr><th class="d">11/13（金）</th><td class="k-u1" data-g="7">凸レンズ② 3本の光と作図</td><td data-g="7"></td><td data-g="7"></td><td data-g="8"></td><td data-g="8"></td><td class="k-tbd" data-g="8">次の単元（未定）</td><td class="k-u4" data-g="9">太陽 黒点・演習</td><td data-g="9"></td><td class="k-tbd" data-g="9">未定</td><td class="k-u4" data-g="9">太陽 黒点・演習</td></tr>
+<tr><th class="d">11/16（月）</th><td data-g="7"></td><td data-g="7"></td><td class="k-u1" data-g="7">凸レンズ② 3本の光と作図</td><td class="k-tbd" data-g="8">次の単元（未定）</td><td class="k-tbd" data-g="8">次の単元（未定）</td><td class="k-tbd" data-g="8">次の単元（未定）</td><td class="k-tbd" data-g="9">未定</td><td class="k-u4" data-g="9">太陽 黒点・演習</td><td data-g="9"></td><td class="k-tbd" data-g="9">未定</td></tr>
+<tr><th class="d">11/17（火）</th><td class="k-u1" data-g="7">凸レンズ③ 作図と演習</td><td class="k-u1" data-g="7">凸レンズ③ 作図と演習</td><td class="k-u1" data-g="7">凸レンズ③ 作図と演習</td><td class="k-tbd" data-g="8">次の単元（未定）</td><td data-g="8"></td><td class="k-tbd" data-g="8">次の単元（未定）</td><td class="k-tbd" data-g="9">未定</td><td data-g="9"></td><td class="k-tbd" data-g="9">未定</td><td class="k-tbd" data-g="9">未定</td></tr>
+<tr><th class="d">11/18（水）</th><td data-g="7"></td><td data-g="7"></td><td data-g="7"></td><td class="k-final" data-g="8">期末テスト</td><td class="k-final" data-g="8">期末テスト</td><td class="k-final" data-g="8">期末テスト</td><td data-g="9"></td><td data-g="9"></td><td data-g="9"></td><td data-g="9"></td></tr>
+<tr><th class="d">11/19（木）</th><td class="k-final" data-g="7">期末テスト</td><td class="k-final" data-g="7">期末テスト</td><td class="k-final" data-g="7">期末テスト</td><td data-g="8"></td><td data-g="8"></td><td data-g="8"></td><td data-g="9"></td><td data-g="9"></td><td data-g="9"></td><td data-g="9"></td></tr>
+<tr><th class="d">11/20（金）</th><td data-g="7"></td><td data-g="7"></td><td data-g="7"></td><td data-g="8"></td><td data-g="8"></td><td data-g="8"></td><td class="k-final" data-g="9">期末テスト</td><td class="k-final" data-g="9">期末テスト</td><td class="k-final" data-g="9">期末テスト</td><td class="k-final" data-g="9">期末テスト</td></tr></tbody>
+<tfoot><tr><th>理科の数</th><td data-g="7">6</td><td data-g="7">5</td><td data-g="7">6</td><td data-g="8">7</td><td data-g="8">8</td><td data-g="8">8</td><td data-g="9">7</td><td data-g="9">5</td><td data-g="9">7</td><td data-g="9">7</td></tr></tfoot>
 </table></div>
 <div class="note">・7年：光は一斉で①〜⑥（小テストはしない）。3クラスとも10/27が光①。7-1だけ10/28が自習。<br>
 ・8年：循環＝3章②血液の循環と呼吸・排出。10/23の自習を反映。<br>
 ・9年：水圧の⑥小テストまで。そのあとは未定。<br>
 ・「理科の数」は今日から期末テストまでの理科のコマ数（自習を除く）。</div>
+<script>
+// 学年の表示切り替え。?hide=8 のように URL で最初から消しておける（福本さん用：8年は関係がない）
+(function(){
+  var hide = (new URLSearchParams(location.search).get('hide') || '').split(',');
+  var btns = document.querySelectorAll('.bar button');
+  function apply(){
+    var on = {};
+    btns.forEach(function(b){ on[b.dataset.g] = b.getAttribute('aria-pressed') === 'true'; });
+    document.querySelectorAll('[data-g]').forEach(function(e){
+      if (e.tagName !== 'BUTTON') e.classList.toggle('off', !on[e.dataset.g]);
+    });
+    document.querySelectorAll('tbody tr').forEach(function(tr){
+      var any = Array.prototype.some.call(tr.querySelectorAll('td'), function(td){
+        return !td.classList.contains('off') && td.textContent.trim(); });
+      tr.classList.toggle('off', !any);
+    });
+  }
+  btns.forEach(function(b){
+    if (hide.indexOf(b.dataset.g) >= 0) b.setAttribute('aria-pressed', 'false');
+    b.addEventListener('click', function(){
+      var cur = b.getAttribute('aria-pressed') === 'true';
+      var left = Array.prototype.filter.call(btns, function(x){ return x.getAttribute('aria-pressed') === 'true'; }).length;
+      if (cur && left === 1) return;   // 全部は消さない
+      b.setAttribute('aria-pressed', cur ? 'false' : 'true'); apply();
+    });
+  });
+  apply();
+})();
+</script>
 </div></body></html>
