@@ -28,6 +28,8 @@ th.d{width:88px}
 .bar button[aria-pressed="false"]{color:#66615a}
 .bar button:active{transform:translateY(2px)}
 .off{display:none}
+/* 授業の中身（単元のセル）以外は中央揃え：期末テスト・小テスト・未定・自習・アンケート・クラス名・理科の数 */
+td.k-final,td.k-test,td.k-tbd,td.k-etc,thead th[data-g],tfoot td{text-align:center}
 tr.past td,tr.past th{opacity:.5}
 .bar .sep{width:12px}
 tfoot td,tfoot th{font-weight:700;border-top:2px solid var(--ink)}
