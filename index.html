@@ -10,10 +10,11 @@
 body{margin:0;background:var(--bg);color:var(--ink);font-family:"Zen Maru Gothic","Yu Gothic UI",sans-serif}
 .wrap{max-width:1500px;margin:0 auto;padding:20px 16px 40px}
 h1{font-size:clamp(17px,4.6vw,22px);margin:0 0 4px;white-space:nowrap}
-.lead{color:var(--sub);font-size:13px;margin:0 0 14px;line-height:1.6;white-space:nowrap;overflow-x:auto}
+.top{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;margin:0 0 12px;flex-wrap:wrap}
+.lead{color:var(--sub);font-size:13px;margin:0;line-height:1.6;white-space:nowrap;text-align:right}
 .panel{background:#fff;border-radius:12px;padding:12px;overflow-x:auto}
 table{border-collapse:collapse;width:auto;font-size:12px}
-th,td{border-bottom:1px solid var(--line);padding:6px 8px;text-align:left;vertical-align:middle;white-space:nowrap}
+th,td{border-bottom:1px solid var(--line);padding:10px 8px;text-align:left;vertical-align:middle;white-space:nowrap}
 thead th{background:#fff;font-size:13px;border-bottom:2px solid var(--ink)}
 th.d{width:88px}
 .k-u0{background:#a9cdf2}.k-u1{background:#c7b8f0}.k-u2{background:#9fdab3}
@@ -21,7 +22,7 @@ th.d{width:88px}
 .k-etc{background:#ecebf1;color:#5d5a6b}.k-tbd{background:#fff;color:#66615a}
 .k-test{background:#fff;font-weight:700;box-shadow:inset 0 0 0 3px var(--ink)}
 .k-final{background:#1f2a24;color:#fff;font-weight:700}
-.bar{display:flex;gap:8px;align-items:center;margin:0 0 12px;white-space:nowrap;overflow-x:auto}
+.bar{display:flex;gap:8px;align-items:center;margin:6px 0 0;white-space:nowrap;overflow-x:auto}
 .bar span{color:var(--sub);font-size:13px}
 .bar button{font:inherit;font-size:13px;font-weight:700;background:#fff;color:var(--ink);border:3px solid transparent;border-radius:8px;padding:5px 14px;cursor:pointer}
 .bar button[aria-pressed="true"]{border-color:var(--ink)}
@@ -37,9 +38,10 @@ tr.past td,tr.past th{opacity:.5}
 tfoot td,tfoot th{font-weight:700;border-top:2px solid var(--ink)}
 .note{color:var(--sub);font-size:12px;line-height:1.7;margin-top:12px;white-space:nowrap;overflow-x:auto}
 </style></head><body><div class="wrap">
-<h1>授業のミトオシ</h1>
-<p class="lead"><span id="from">11/2（月）</span>から2学期期末テストまで。時間割は教務の確定版（10/27）。<br>2学期期末テスト：8年 11/18（水） 1限／7年 11/19（木） 2限／9年 11/20（金） 2限</p>
+<div class="top"><div class="left"><h1>授業のミトオシ</h1>
 <div class="bar"><span>表示する学年</span><button type="button" data-g="7" aria-pressed="true">7年</button><button type="button" data-g="8" aria-pressed="true">8年</button><button type="button" data-g="9" aria-pressed="true">9年</button><span class="sep"></span><span>終わった授業</span><button type="button" data-past="week" aria-pressed="true">1週間</button><button type="button" data-past="all" aria-pressed="false">ぜんぶ</button></div>
+</div>
+<p class="lead"><span id="from">11/2（月）</span>から2学期期末テストまで。時間割は教務の確定版（10/27）。<br>2学期期末テスト：8年 11/18（水） 1限／7年 11/19（木） 2限／9年 11/20（金） 2限</p></div>
 <div class="panel"><table>
 <thead><tr><th>日</th><th data-g="7" data-c="7-1">7-1</th><th data-g="7" data-c="7-2">7-2</th><th data-g="7" data-c="7-3">7-3</th><th data-g="8" data-c="8-1">8-1</th><th data-g="8" data-c="8-2">8-2</th><th data-g="8" data-c="8-3">8-3</th><th data-g="9" data-c="9-1">9-1</th><th data-g="9" data-c="9-2">9-2</th><th data-g="9" data-c="9-3">9-3</th><th data-g="9" data-c="9-4">9-4</th></tr></thead>
 <tbody><tr data-date="2026-10-21"><th class="d">10/21（水）</th><td data-g="7" data-c="7-1"></td><td data-g="7" data-c="7-2"></td><td data-g="7" data-c="7-3"></td><td class="k-u2" data-g="8" data-c="8-1" data-n="1">循環① 説明・計画</td><td data-g="8" data-c="8-2"></td><td data-g="8" data-c="8-3"></td><td data-g="9" data-c="9-1"></td><td data-g="9" data-c="9-2"></td><td data-g="9" data-c="9-3"></td><td class="k-test" data-g="9" data-c="9-4" data-n="1">水圧⑥ 小テスト</td></tr>
