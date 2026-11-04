@@ -43,7 +43,7 @@ tfoot td,tfoot th{font-weight:700;border-top:2px solid var(--ink)}
 </style></head><body><div class="wrap">
 <div class="top"><div class="left"><h1>授業のミトオシ</h1>
 <div class="bar"><span>先生</span><button type="button" data-t="新井" aria-pressed="false">新井</button><button type="button" data-t="福本" aria-pressed="false">福本</button><button type="button" data-t="" aria-pressed="false">ぜんぶ</button></div>
-<div class="bar"><span>表示する学年</span><button type="button" data-g="7" aria-pressed="true">７年</button><button type="button" data-g="8" aria-pressed="true">８年</button><button type="button" data-g="9" aria-pressed="true">９年</button><span class="sep"></span><span>終わった授業</span><button type="button" data-past="week" aria-pressed="true">１週間</button><button type="button" data-past="all" aria-pressed="false">ぜんぶ</button></div>
+<div class="bar"><span>表示する学年</span><button type="button" data-g="7" aria-pressed="true">７年</button><button type="button" data-g="8" aria-pressed="true">８年</button><button type="button" data-g="9" aria-pressed="true">９年</button><span class="sep"></span><span>終わった授業</span><button type="button" data-past="week" aria-pressed="false">１週間</button><button type="button" data-past="all" aria-pressed="false">ぜんぶ</button></div>
 <div class="bar"><span>表示するクラス</span><button type="button" data-cls="7-1" data-t="新井" aria-pressed="true">７－１</button><button type="button" data-cls="7-2" data-t="福本" aria-pressed="true">７－２</button><button type="button" data-cls="7-3" data-t="福本" aria-pressed="true">７－３</button><button type="button" data-cls="8-1" data-t="新井" aria-pressed="true">８－１</button><button type="button" data-cls="8-2" data-t="新井" aria-pressed="true">８－２</button><button type="button" data-cls="8-3" data-t="新井" aria-pressed="true">８－３</button><button type="button" data-cls="9-1" data-t="新井" aria-pressed="true">９－１</button><button type="button" data-cls="9-2" data-t="福本" aria-pressed="true">９－２</button><button type="button" data-cls="9-3" data-t="福本" aria-pressed="true">９－３</button><button type="button" data-cls="9-4" data-t="福本" aria-pressed="true">９－４</button></div>
 </div>
 <p class="lead"><span id="from">１１/４（水）</span>から２学期期末テストまで。時間割は教務の確定版（１０/２７）。<br>２学期期末テスト：８年 １１/１８（水） １限／７年 １１/１９（木） ２限／９年 １１/２０（金） ２限</p></div>
@@ -89,7 +89,7 @@ tfoot td,tfoot th{font-weight:700;border-top:2px solid var(--ink)}
   var tbtns = document.querySelectorAll('.bar button[data-t]:not([data-cls])');
   function setTeacher(t){ cbtns.forEach(function(x){ x.setAttribute('aria-pressed', (!t || x.dataset.t === t) ? 'true' : 'false'); }); }
   var pbtns = document.querySelectorAll('.bar button[data-past]');
-  var pastMode = 'week';   // 終わった授業：最初は1週間ぶんだけ薄く出す。もう一度押すと隠す
+  var pastMode = 'none';   // 終わった授業：最初は隠す（11-04 新井さん）。1週間／ぜんぶを押すと薄く出す
   var wa = new Date(); wa.setDate(wa.getDate() - 7);
   var weekAgo = wa.getFullYear() + '-' + ('0' + (wa.getMonth() + 1)).slice(-2) + '-' + ('0' + wa.getDate()).slice(-2);
   pbtns.forEach(function(b){
