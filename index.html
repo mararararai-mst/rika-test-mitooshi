@@ -42,8 +42,9 @@ tfoot td,tfoot th{font-weight:700;border-top:2px solid var(--ink)}
 .note{color:var(--sub);font-size:12px;line-height:1.7;margin-top:12px;white-space:nowrap;overflow-x:auto}
 </style></head><body><div class="wrap">
 <div class="top"><div class="left"><h1>授業のミトオシ</h1>
+<div class="bar"><span>先生</span><button type="button" data-t="新井" aria-pressed="false">新井</button><button type="button" data-t="福本" aria-pressed="false">福本</button><button type="button" data-t="" aria-pressed="false">ぜんぶ</button></div>
 <div class="bar"><span>表示する学年</span><button type="button" data-g="7" aria-pressed="true">７年</button><button type="button" data-g="8" aria-pressed="true">８年</button><button type="button" data-g="9" aria-pressed="true">９年</button><span class="sep"></span><span>終わった授業</span><button type="button" data-past="week" aria-pressed="true">１週間</button><button type="button" data-past="all" aria-pressed="false">ぜんぶ</button></div>
-<div class="bar"><span>表示するクラス</span><button type="button" data-cls="7-1" aria-pressed="true">７－１</button><button type="button" data-cls="7-2" aria-pressed="true">７－２</button><button type="button" data-cls="7-3" aria-pressed="true">７－３</button><button type="button" data-cls="8-1" aria-pressed="true">８－１</button><button type="button" data-cls="8-2" aria-pressed="true">８－２</button><button type="button" data-cls="8-3" aria-pressed="true">８－３</button><button type="button" data-cls="9-1" aria-pressed="true">９－１</button><button type="button" data-cls="9-2" aria-pressed="true">９－２</button><button type="button" data-cls="9-3" aria-pressed="true">９－３</button><button type="button" data-cls="9-4" aria-pressed="true">９－４</button></div>
+<div class="bar"><span>表示するクラス</span><button type="button" data-cls="7-1" data-t="新井" aria-pressed="true">７－１</button><button type="button" data-cls="7-2" data-t="福本" aria-pressed="true">７－２</button><button type="button" data-cls="7-3" data-t="福本" aria-pressed="true">７－３</button><button type="button" data-cls="8-1" data-t="新井" aria-pressed="true">８－１</button><button type="button" data-cls="8-2" data-t="新井" aria-pressed="true">８－２</button><button type="button" data-cls="8-3" data-t="新井" aria-pressed="true">８－３</button><button type="button" data-cls="9-1" data-t="新井" aria-pressed="true">９－１</button><button type="button" data-cls="9-2" data-t="福本" aria-pressed="true">９－２</button><button type="button" data-cls="9-3" data-t="福本" aria-pressed="true">９－３</button><button type="button" data-cls="9-4" data-t="福本" aria-pressed="true">９－４</button></div>
 </div>
 <p class="lead"><span id="from">１１/４（水）</span>から２学期期末テストまで。時間割は教務の確定版（１０/２７）。<br>２学期期末テスト：８年 １１/１８（水） １限／７年 １１/１９（木） ２限／９年 １１/２０（金） ２限</p></div>
 <div class="panel"><table>
@@ -84,6 +85,9 @@ tfoot td,tfoot th{font-weight:700;border-top:2px solid var(--ink)}
   var cbtns = document.querySelectorAll('.bar button[data-cls]');
   function pressed(b){ return b.getAttribute('aria-pressed') === 'true'; }
   function onCount(){ return Array.prototype.filter.call(cbtns, pressed).length; }
+  // 先生のボタン：その先生の受け持ちのクラスだけにする（ぜんぶ＝全クラス）。?t=福本 で最初から切り替えておける
+  var tbtns = document.querySelectorAll('.bar button[data-t]:not([data-cls])');
+  function setTeacher(t){ cbtns.forEach(function(x){ x.setAttribute('aria-pressed', (!t || x.dataset.t === t) ? 'true' : 'false'); }); }
   var pbtns = document.querySelectorAll('.bar button[data-past]');
   var pastMode = 'week';   // 終わった授業：最初は1週間ぶんだけ薄く出す。もう一度押すと隠す
   var wa = new Date(); wa.setDate(wa.getDate() - 7);
@@ -112,6 +116,11 @@ tfoot td,tfoot th{font-weight:700;border-top:2px solid var(--ink)}
     cbtns.forEach(function(b){ onC[b.dataset.cls] = pressed(b); if (pressed(b)) on[b.dataset.cls[0]] = true; });
     // 学年のボタンは、その学年のクラスが1つでも出ていれば押された見た目
     btns.forEach(function(b){ b.setAttribute('aria-pressed', on[b.dataset.g] ? 'true' : 'false'); });
+    // 先生のボタンは、表示中のクラスがちょうどその先生の受け持ちのときだけ押された見た目
+    tbtns.forEach(function(b){
+      var same = Array.prototype.every.call(cbtns, function(x){ return pressed(x) === (!b.dataset.t || x.dataset.t === b.dataset.t); });
+      b.setAttribute('aria-pressed', same ? 'true' : 'false');
+    });
     document.querySelectorAll('[data-g]').forEach(function(e){
       if (e.tagName === 'BUTTON') return;
       e.classList.toggle('off', e.dataset.c ? !onC[e.dataset.c] : !on[e.dataset.g]);
@@ -132,7 +141,12 @@ tfoot td,tfoot th{font-weight:700;border-top:2px solid var(--ink)}
       b.setAttribute('aria-pressed', pressed(b) ? 'false' : 'true'); apply();
     });
   });
+  var t0 = new URLSearchParams(location.search).get('t');
+  if (t0 !== null && Array.prototype.some.call(cbtns, function(x){ return x.dataset.t === t0; })) setTeacher(t0);
   if (onCount() === 0) cbtns.forEach(function(b){ b.setAttribute('aria-pressed', 'true'); });
+  tbtns.forEach(function(b){
+    b.addEventListener('click', function(){ setTeacher(b.dataset.t); apply(); fit(); });
+  });
   btns.forEach(function(b){
     b.addEventListener('click', function(){
       var mine = Array.prototype.filter.call(cbtns, function(x){ return x.dataset.cls[0] === b.dataset.g; });
