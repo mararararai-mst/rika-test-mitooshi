@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>音の世界　４時間の流れ</title>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#2b2f38;--sub:#596170;--mint:#256b57;--mintbg:#e6f6f0;--pink:#b8466f;--pinkbg:#fdeef3;--cream:#fbf5e6;--line:#d9dde3}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:#fffdf8;color:var(--ink);font-family:"UD デジタル 教科書体 NK-R","UD Digi Kyokasho NK-R","Zen Maru Gothic",sans-serif;font-size:17px;line-height:1.8}
+.wrap{max-width:860px;margin:0 auto;padding:20px 16px 48px}
+h1,h2,h3,summary,.btns button,nav a{font-family:"Zen Maru Gothic",sans-serif}
+h1{font-size:24px;font-weight:700;margin:0 0 4px}
+.lead{color:var(--sub);font-size:15px;margin:0 0 14px}
+nav{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 10px}
+nav a{text-decoration:none;color:var(--ink);border:2px solid var(--line);background:#fff;border-radius:12px;padding:6px 12px;font-size:15px;font-weight:700}
+nav a span{display:block;font-size:12px;font-weight:500;color:var(--sub)}
+.btns{display:flex;gap:8px;margin:0 0 18px;flex-wrap:wrap}
+.btns button{border:2px solid var(--mint);background:#fff;color:var(--mint);border-radius:999px;padding:6px 16px;font-size:15px;font-weight:700;cursor:pointer}
+section{margin:0 0 30px;scroll-margin-top:12px}
+h2{font-size:21px;font-weight:700;margin:0 0 4px;padding:6px 14px;border-radius:12px;background:var(--mintbg);border-left:8px solid var(--mint)}
+.aim{color:var(--sub);font-size:15px;margin:4px 0 12px}
+.hyp{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:0 0 12px}
+.hyp div{border:2px solid;border-radius:12px;padding:8px 14px;font-size:16px}
+.hyp .h1{border-color:var(--pink);background:var(--pinkbg)}
+.hyp .h2{border-color:var(--mint);background:var(--mintbg)}
+.hyp b{font-family:"Zen Maru Gothic",sans-serif}
+details{border:2px solid var(--line);border-radius:14px;background:#fff;margin:0 0 10px}
+summary{list-style:none;cursor:pointer;padding:12px 16px;display:flex;align-items:center;gap:12px;font-weight:700;font-size:17px}
+summary::-webkit-details-marker{display:none}
+.no{flex:none;width:32px;height:32px;border-radius:50%;background:var(--mint);color:#fff;display:flex;align-items:center;justify-content:center;font-size:16px}
+.arrow{margin-left:auto;flex:none;color:var(--sub);font-size:14px;font-weight:500;white-space:nowrap}
+details[open] .arrow::after{content:"とじる"}
+details:not([open]) .arrow::after{content:"スクリプトを見る"}
+details[open]{border-color:var(--mint)}
+.body{padding:0 18px 14px;border-top:1px dashed var(--line)}
+.t{margin:10px 0}
+.t::before{content:"先生";font-family:"Zen Maru Gothic",sans-serif;font-size:12px;font-weight:700;background:var(--mint);color:#fff;border-radius:6px;padding:1px 7px;margin-right:8px;vertical-align:2px}
+.s{margin:6px 0 6px 24px;color:var(--pink)}
+.s::before{content:"子ども";font-family:"Zen Maru Gothic",sans-serif;font-size:12px;font-weight:700;background:var(--pink);color:#fff;border-radius:6px;padding:1px 7px;margin-right:8px;vertical-align:2px}
+.do{margin:8px 0;color:var(--sub)}
+.do::before{content:"操作";font-family:"Zen Maru Gothic",sans-serif;font-size:12px;font-weight:700;border:1.5px solid var(--sub);border-radius:6px;padding:0 6px;margin-right:8px;vertical-align:2px}
+.note{background:var(--cream);border-radius:10px;padding:8px 12px;margin:12px 0 0;font-size:15px}
+.note b{font-family:"Zen Maru Gothic",sans-serif}
+.board{border:2px solid var(--mint);border-radius:10px;padding:6px 12px;margin:10px 0;background:#fff}
+.board b{font-family:"Zen Maru Gothic",sans-serif;color:var(--mint)}
+.flow{margin:6px 0 0;padding:12px 16px 12px 2.4em;background:#fff;border:2px solid var(--line);border-radius:14px}
+.flow li{margin:4px 0}
+.memo{border:2px solid var(--line);border-radius:12px;padding:10px 16px;margin-top:10px;font-size:15px;background:#fff}
+.memo h3{font-size:16px;margin:0 0 4px}
+.memo ul{margin:0;padding-left:1.2em}
+@media (max-width:600px){.hyp{grid-template-columns:1fr}.arrow{display:none}}
+@media print{details{break-inside:avoid}.btns,nav{display:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<h1>音の世界　４時間の流れ</h1>
+<p class="lead">７年理科。福本さんとの打ち合わせ（１１/２５）で決めた流れ。<br>１時間目は、番号の行を押すと解説スクリプトが出ます。</p>
+
+<nav>
+  <a href="#h1">１時間目<span>仮説を比べる</span></a>
+  <a href="#h2">２時間目<span>音の速さ</span></a>
+  <a href="#h3">３時間目<span>振動・振幅</span></a>
+  <a href="#h4">４時間目<span>計算と問題</span></a>
+</nav>
+<div class="btns">
+  <button type="button" onclick="document.querySelectorAll('details').forEach(d=>d.open=true)">ぜんぶ開く</button>
+  <button type="button" onclick="document.querySelectorAll('details').forEach(d=>d.open=false)">ぜんぶ閉じる</button>
+</div>
+
+<!-- ===== １時間目 ===== -->
+<section id="h1">
+<h2>１時間目　仮説を比べる</h2>
+<p class="aim">音源・振動をおさえ、「音は振動が伝わる」を仮説の比べ合いで確かめる。小テスト発展１につなげる。</p>
+
+<div class="hyp">
+  <div class="h1"><b>仮説①</b>　空気そのものが、音源から耳まで移動してくる</div>
+  <div class="h2"><b>仮説②</b>　空気はその場で震え、振動がとなりへ伝わっていく</div>
+</div>
+
+<details>
+<summary><span class="no">０</span>音叉・グラスを触る（導入）<span class="arrow"></span></summary>
+<div class="body">
+<p class="do">音叉・グラスを配る</p>
+<p class="t">「音叉をたたいて、音を出してみよう。鳴っている音叉に、そっと指でふれてみて。」</p>
+<p class="s">ビリビリする／止まったら音も止まった</p>
+<p class="t">「鳴っている音叉を、水にちょんとつけてみよう。」</p>
+<p class="s">水がはねた</p>
+<p class="t">「グラスのふちを、ぬらした指でこすってみよう。」</p>
+<p class="t">「音を出している物は、どれも震えていたね。音を出している物を『音源』、物が震えることを『振動』といいます。」</p>
+<p class="do">同じ高さの音叉を２本ならべ、片方を鳴らす。ついたてありとなしで比べる</p>
+<p class="t">「鳴らしていない方の音叉も鳴りだしたね。ついたてを置くとどうなるかな。」</p>
+<div class="board"><b>板書</b>　音を出している物＝音源　／　物が震えること＝振動</div>
+</div>
+</details>
+
+<details>
+<summary><span class="no">１</span>仮説を２つ立てて、どっちが正しそうか考える<span class="arrow"></span></summary>
+<div class="body">
+<p class="t">「音源から耳まで、音はどうやって届いているんやろう。考え方を２つ出します。」</p>
+<p class="t">「仮説①：空気そのものが、音源から耳まで移動してくる。風みたいに、空気のかたまりが飛んでくる考え方。」</p>
+<p class="t">「仮説②：空気は移動しないで、その場で震える。震えが、となりの空気へ、またとなりへと伝わっていく考え方。」</p>
+<p class="t">「どっちが正しそう？　手をあげて。理由も言える人は言ってみて。」</p>
+<p class="s">①：声を出すと息が出るから</p>
+<p class="s">②：遠くの音でも風を感じないから</p>
+<p class="t">「どっちの意見にも理由があるね。どっちが正しいかは、まだ決めません。確かめ方を考えよう。」</p>
+</div>
+</details>
+
+<details>
+<summary><span class="no">２</span>それぞれの仮説が正しいなら、どういう現象が起こるか考える<span class="arrow"></span></summary>
+<div class="body">
+<p class="do">ガラス容器とブザーを見せる</p>
+<p class="t">「このブザーをガラスの容器に入れて、ふたをします。すきまはありません。この中で鳴らしたら、外で音は聞こえるかな。」</p>
+<p class="t">「仮説①が正しいとすると、どうなるはず？」</p>
+<p class="s">聞こえない</p>
+<p class="t">「なんで？」</p>
+<p class="s">空気がガラスを通りぬけられないから</p>
+<p class="t">「そう。空気そのものが移動して届くなら、空気はガラスの壁を通りぬけられないから、外には届かない。仮説①が正しいなら、聞こえないはず。」</p>
+<p class="t">「じゃあ、仮説②が正しいとすると？」</p>
+<p class="s">聞こえる</p>
+<p class="t">「なんで？」</p>
+<p class="s">震えが、中の空気からガラスに伝わって、外の空気に伝わるから</p>
+<p class="t">「そう。震えなら、中の空気 → ガラスの壁 → 外の空気と伝わっていける。仮説②が正しいなら、聞こえるはず。」</p>
+<p class="t">「つまり、聞こえなかったら仮説①、聞こえたら仮説②が正しそう、ということになる。ノートに、２つの予想とその理由を書いておこう。書けたら、鳴らします。」</p>
+<p class="note"><b>小テスト発展１（１）</b>　答え「空気そのものは容器の壁を通りぬけないから」と同じ言い方にしてあります。</p>
+</div>
+</details>
+
+<details>
+<summary><span class="no">３</span>音を鳴らして、どちらが正しいか確かめる<span class="arrow"></span></summary>
+<div class="body">
+<p class="t">「では鳴らします。外で聞こえるか、よく聞いてね。」</p>
+<p class="do">ブザーを鳴らす</p>
+<p class="t">「聞こえた？」</p>
+<p class="s">聞こえた</p>
+<p class="t">「聞こえたね。ということは、正しそうなのはどっち？」</p>
+<p class="s">仮説②</p>
+<p class="t">「ガラスの容器にそっとさわってみて。」</p>
+<p class="s">震えてる</p>
+<p class="t">「ブザーの震えが、容器にまで伝わっているね。」</p>
+</div>
+</details>
+
+<details>
+<summary><span class="no">４</span>間違った仮説が、なぜ間違ったのかを確かめる<span class="arrow"></span></summary>
+<div class="body">
+<p class="t">「仮説①が正しいなら、聞こえないはずでした。なんでだった？」</p>
+<p class="s">空気がガラスの壁を通りぬけられないから</p>
+<p class="t">「そう。でも実際は聞こえた。だから、空気そのものが移動して届く、という仮説①は正しくない、とわかります。」</p>
+<p class="t">「では、仮説②でこの結果を説明してみよう。音はどこを通って耳まで届いた？」</p>
+<p class="s">ブザーの振動 → 中の空気 → ガラスの壁 → 外の空気 → 耳</p>
+<p class="t">「そう。ブザーの振動が、容器の中の空気、容器の壁、容器の外の空気と順に伝わって、耳まで届いた。空気そのものは移動していません。震えが伝わっています。」</p>
+<p class="t">「さっきさわったら、容器が震えていたよね。空気だけでなく、ガラスのような固体も振動を伝えます。」</p>
+<div class="board"><b>板書</b>　音は、音源の振動が空気などを次々に伝わっていくことで届く</div>
+<p class="note"><b>小テスト発展１（２）</b>　「振動 → 容器の中の空気 → 容器の壁 → 容器の外の空気」の穴埋めと同じ順番です。</p>
+</div>
+</details>
+
+<details>
+<summary><span class="no">５</span>空気を抜いたらどうなる？を考える<span class="arrow"></span></summary>
+<div class="body">
+<p class="t">「最後の問いです。容器の中の空気を、ポンプでどんどん抜いていったら、外で聞こえる音はどうなると思う？」</p>
+<p class="s">小さくなる／聞こえなくなる</p>
+<p class="t">「なんで？」</p>
+<p class="s">振動を伝える空気が減るから</p>
+<p class="t">「やってみよう。」</p>
+<p class="do">ブザーを鳴らしたまま、簡易真空ポンプで空気を抜く</p>
+<p class="t">「だんだん小さくなったね。振動を伝える空気が減ると、音は伝わりにくくなります。」</p>
+<p class="do">音が消えきらなかったとき</p>
+<p class="t">「まだ少し聞こえるね。なんでやろう。」</p>
+<p class="s">空気がまだ残っている／容器の底から伝わっている</p>
+<p class="t">「このポンプでは、空気を全部は抜けません。少し残った空気や、ブザーがふれている容器の底を通って、振動が伝わっています。」</p>
+<p class="t">「では、空気がまったくない宇宙では？」</p>
+<p class="s">聞こえない</p>
+<p class="t">「そう。何もないところでは、振動を伝える物がないので、音は伝わりません。」</p>
+<p class="note"><b>小テスト発展１（３）</b>　答えは「小さくなる」。実験では消えきらないので、消えきらない理由を一言はさみます。</p>
+</div>
+</details>
+</section>
+
+<!-- ===== ２時間目 ===== -->
+<section id="h2">
+<h2>２時間目　音の速さ</h2>
+<ol class="flow">
+<li>音の速さ。速さ系の問題を配って解かせる</li>
+<li>確認テスト＝プリント裏の２番。終わったらクリアファイルに入れさせる</li>
+</ol>
+</section>
+
+<!-- ===== ３時間目 ===== -->
+<section id="h3">
+<h2>３時間目　振動・振幅</h2>
+<ol class="flow">
+<li>オシロスコープの波形を見せて説明する → 「確かめてみよう」で自由に触る</li>
+<li>オシロスコープの図を書かせ、１回の振動をおさえる。高い音・低い音の波形も見せる</li>
+<li>弦：モノコードは無いので、ギター・ウクレレで見せる。太さ・張りの強さ・振動数・振幅と、音の高さ・大きさの関係をまとめさせる</li>
+</ol>
+</section>
+
+<!-- ===== ４時間目 ===== -->
+<section id="h4">
+<h2>４時間目　振動数の計算と問題</h2>
+<ol class="flow">
+<li>Ｈｚ（振動数）の計算。教科書の問題には無いが、やっておく</li>
+<li>残りの問題を解く（ミニプリントでもよい）</li>
+<li>まとめは、前で書いても子どもに書かせてもよい（任せる）</li>
+</ol>
+</section>
+
+<div class="memo">
+<h3>準備</h3>
+<ul>
+<li>音叉・グラス（グラスは買ってくる）</li>
+<li>ガラス容器・ブザー・簡易真空ポンプ（ブザーの下にスポンジを敷くと、底から伝わる音が減る）</li>
+<li>オシロスコープ（仕上げる）</li>
+<li>ギター・ウクレレ（ウクレレは持ってくる）</li>
+<li>速さ系の問題・ミニプリント・クリアファイル</li>
+</ul>
+<h3 style="margin-top:8px">まだ決まっていないこと</h3>
+<ul>
+<li>各クラスの開始日</li>
+</ul>
+</div>
+</div>
+</body>
+</html>
